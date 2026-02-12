@@ -5,6 +5,7 @@ import ProjectReport from "@/components/ProjectReport";
 import About from "@/components/About";
 import ContactCTA from "@/components/ContactCTA";
 
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-zinc-300">
