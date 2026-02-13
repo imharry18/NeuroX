@@ -7,7 +7,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle sticky navbar visual changes on scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -18,43 +17,42 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Brain Tumor Detection", href: "#brain-tumor" },
-    { name: "Blood Report Analysis", href: "#blood-report" },
-    { name: "Project Report", href: "#project-report" },
-    { name: "Contact", href: "#contact" },
+    { name: "Platform", href: "#home" },
+    { name: "Neuro-Oncology", href: "#brain-tumor" },
+    { name: "Hematology", href: "#blood-report" },
+    { name: "Research", href: "#project-report" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 h-[70px] ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 h-[70px] flex items-center ${
         isScrolled
-          ? "bg-slate-950/90 backdrop-blur-md shadow-lg shadow-black/40 border-b border-slate-800"
-          : "bg-slate-950 border-b border-slate-800/50"
+          ? "bg-black/70 backdrop-blur-lg border-b border-white/5"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <nav className="flex items-center justify-between h-full w-full" aria-label="Main Navigation">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <nav className="flex items-center justify-between w-full" aria-label="Main Navigation">
           
-          {/* Left Side: Logo Area */}
-          <div className="flex-shrink-0 w-48">
+          <div className="flex-shrink-0">
             <Link 
               href="/" 
-              className="text-2xl font-extrabold text-white tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-sm"
-              aria-label="NeuroX Home"
+              className="text-xl font-semibold text-white tracking-tight flex items-center gap-2"
             >
-              Neuro<span className="text-cyan-500">X</span>
+              <svg className="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+              NeuroX
             </Link>
           </div>
 
-          {/* Center: Desktop Navigation Links */}
           <div className="hidden lg:flex items-center justify-center flex-1">
             <ul className="flex items-center gap-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-sm px-1 py-0.5"
+                    className="text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -63,33 +61,34 @@ export default function Navbar() {
             </ul>
           </div>
 
-          {/* Right Side: About Us Button (Desktop) */}
-          <div className="hidden lg:flex items-center justify-end w-48">
+          <div className="hidden lg:flex items-center justify-end gap-4">
             <Link
-              href="#about"
-              className="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-all duration-300 bg-transparent border border-cyan-500 rounded-full hover:bg-cyan-500/10 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
+              href="#contact"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
-              About Us
+              Contact Sales
+            </Link>
+            <Link
+              href="#demo"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-black bg-white rounded-md hover:bg-zinc-200 transition-all"
+            >
+              Request Demo
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
           <div className="flex lg:hidden items-center ml-auto">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500"
-              aria-controls="mobile-menu"
-              aria-expanded={isOpen}
+              className="p-2 text-zinc-400 hover:text-white transition-colors focus:outline-none"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <span className="sr-only">{isOpen ? "Close main menu" : "Open main menu"}</span>
               {isOpen ? (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
@@ -97,32 +96,37 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       <div
-        id="mobile-menu"
-        className={`lg:hidden absolute top-[70px] left-0 w-full bg-slate-950 border-t border-slate-800 overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-screen opacity-100 shadow-xl" : "max-h-0 opacity-0"
+        className={`lg:hidden absolute top-[70px] left-0 w-full bg-zinc-950/95 backdrop-blur-xl border-b border-white/5 overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="px-4 py-4 space-y-2">
+        <ul className="px-4 py-6 space-y-4">
           {navLinks.map((link) => (
             <li key={link.name}>
               <Link
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-3 rounded-md text-base font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-900 transition-colors"
+                className="block text-sm font-medium text-zinc-300 hover:text-white transition-colors"
               >
                 {link.name}
               </Link>
             </li>
           ))}
-          <li className="pt-4 pb-2">
+          <li className="pt-4 flex flex-col gap-3">
             <Link
-              href="#about"
+              href="#contact"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center w-full px-6 py-3 text-base font-semibold text-cyan-400 transition-all duration-300 border border-cyan-500/50 rounded-lg hover:bg-cyan-500/10"
+              className="block w-full text-center py-2.5 text-sm font-medium text-zinc-300 border border-white/10 rounded-md hover:bg-white/5 transition-colors"
             >
-              About Us
+              Contact Sales
+            </Link>
+            <Link
+              href="#demo"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-center py-2.5 text-sm font-medium text-black bg-white rounded-md hover:bg-zinc-200 transition-colors"
+            >
+              Request Demo
             </Link>
           </li>
         </ul>
