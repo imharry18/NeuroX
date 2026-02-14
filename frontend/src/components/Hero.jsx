@@ -1,59 +1,86 @@
-// src/components/Hero.jsx
 import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-slate-900">
-      {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+    <section id="home" className="relative pt-24 pb-24 lg:pt-36 lg:pb-32 overflow-hidden border-b border-white/5">
+      {/* Subtle background grid for clinical tech feel */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <div className="absolute inset-0 bg-black [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left -> Text */}
           <div className="space-y-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
-              AI-Powered Medical Intelligence for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Early Disease Detection</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300">
+              <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+              NeuroX Platform v2.0 Live
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight">
+              Clinical-Grade AI for <br className="hidden md:block"/>
+              <span className="text-zinc-400">Diagnostic Precision.</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed">
-              Upload MRI scans or blood reports and let NeuroX assist in detecting brain tumors and analyzing medical data instantly.
+            <p className="text-lg text-zinc-400 max-w-xl leading-relaxed font-light">
+              Empower healthcare professionals with deep learning infrastructure. Automate the analysis of MRI neuroimaging and comprehensive hematology reports with high-confidence accuracy.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
                 href="/brain-tumor-app"
-                className="inline-flex justify-center items-center px-8 py-3.5 text-base font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/25"
+                className="inline-flex justify-center items-center px-6 py-3 text-sm font-medium text-black bg-white rounded-md hover:bg-zinc-200 transition-all"
               >
-                Analyze MRI Scan
+                Access MRI Analysis
               </Link>
               <Link
                 href="/blood-report-app"
-                className="inline-flex justify-center items-center px-8 py-3.5 text-base font-semibold text-white bg-slate-900 border border-slate-700 rounded-lg hover:border-cyan-500 hover:bg-slate-800 transition-all"
+                className="inline-flex justify-center items-center px-6 py-3 text-sm font-medium text-white bg-transparent border border-white/20 rounded-md hover:bg-white/5 transition-all"
               >
-                Upload Blood Report
+                Process Blood Panel
               </Link>
             </div>
           </div>
 
-          {/* Right -> Image / AI Brain Graphic */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="w-full max-w-md aspect-square rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 border border-slate-700 flex flex-col items-center justify-center shadow-2xl relative overflow-hidden group p-8">
-              {/* Abstract Brain/Medical AI Graphic */}
-              <div className="relative w-48 h-48 mb-6">
-                <div className="absolute inset-0 border-4 border-cyan-500/30 rounded-full animate-ping"></div>
-                <div className="absolute inset-4 border-4 border-blue-500/50 rounded-full animate-spin" style={{ animationDuration: '3s' }}></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-24 h-24 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
+            <div className="w-full max-w-lg aspect-[4/3] rounded-xl bg-zinc-950 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col">
+              {/* Dashboard Header */}
+              <div className="h-10 border-b border-white/5 flex items-center px-4 gap-2 bg-zinc-900/50">
+                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                <span className="ml-auto text-[10px] text-zinc-500 font-mono uppercase tracking-widest">NX-SYS-STATUS: ACTIVE</span>
               </div>
-              <div className="w-full bg-slate-950/80 backdrop-blur border border-slate-800 p-4 rounded-xl">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-semibold text-slate-400">AI Medical Dashboard</span>
-                  <span className="text-xs font-semibold text-emerald-400">Processing...</span>
+              
+              {/* Dashboard Content */}
+              <div className="p-6 flex-1 flex flex-col gap-6">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">Diagnostic Confidence</h3>
+                    <p className="text-2xl font-light text-white">99.4%</p>
+                  </div>
+                  <div className="p-2 border border-white/5 rounded bg-white/5">
+                    <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
                 </div>
-                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-cyan-500 w-2/3 h-full rounded-full"></div>
+
+                <div className="space-y-3 mt-auto">
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs text-zinc-500 font-mono">
+                      <span>Neural Net Processing</span>
+                      <span className="text-white">Complete</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 h-1 rounded-none overflow-hidden">
+                      <div className="bg-indigo-500 w-full h-full"></div>
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs text-zinc-500 font-mono">
+                      <span>Feature Extraction</span>
+                      <span className="text-white">Active</span>
+                    </div>
+                    <div className="w-full bg-zinc-900 h-1 rounded-none overflow-hidden">
+                      <div className="bg-zinc-500 w-2/3 h-full"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
