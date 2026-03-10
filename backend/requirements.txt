@@ -1,9 +1,9 @@
 fastapi
 uvicorn
+python-multipart
 torch
 torchvision
 segmentation-models-pytorch
-opencv-python
-numpy
-pytorch-grad-cam
-python-multipart 
+opencv-python-headless
+numpy<2.0.0
+grad-cam
