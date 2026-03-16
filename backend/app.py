@@ -123,25 +123,18 @@ def generate_gradcam(img_tensor, original_img):
     return cam_image_bgr
 
 def generate_segmentation_overlay(original_img, mask):
-    # Resize original image to match mask size (224x224)
     orig_resized = cv2.resize(original_img, (224, 224))
     
     # Create a blank image of the same size with all zeros
     red_overlay = np.zeros_like(orig_resized)
     
-    # In OpenCV, images are BGR. Red is channel 2.
-    # Set the color to pure red (Blue=0, Green=0, Red=255) where the mask detects a tumor
     red_overlay[mask > 0.5] = (0, 0, 255) 
     
-    # Overlay the red mask onto the original image
-    # You can tweak 0.7 (image opacity) and 0.5 (red mask opacity) to change the look
     overlay = cv2.addWeighted(orig_resized, 0.7, red_overlay, 0.5, 0)
     
     return overlay
 
-# --------------------------------
-# ROUTES
-# --------------------------------
+
 
 @app.get("/")
 def home():
